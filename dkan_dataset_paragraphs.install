@@ -5,39 +5,38 @@
  * Install, update, uninstall functions for the dkan_dataset_paragraphs module.
  */
 
+/**
+ * Implements hook_install().
+ */
 function dkan_dataset_paragraphs_install() {
-  $message = '';
   $base_info = field_info_field('field_metadata_extended');
   if (!$base_info) {
     field_create_field(_get_metadata_extended_field_base());
-    $message .= "...Created field_metadata_extended Field Base\n";
+    watchdog('dkan_dataset_paragraphs', 'Created field_metadata_extended Field Base');
   }
 
   // Create field_metadata_extended field instance.
   $instance_info = field_info_instance('node', 'field_metadata_extended', 'dataset');
   if (!$instance_info) {
     field_create_instance(_get_metadata_extended_field_instance());
-    $message .= "...Created field_metadata_extended Field Instance\n";
+    watchdog('dkan_dataset_paragraphs', 'Created field_metadata_extended Field Instance');
   }
-  echo $message;
 }
 
 /**
  * Implements hook_uninstall().
  */
 function dkan_dataset_paragraphs_uninstall() {
-  $message = '';
   // Remove field_metadata_extended field instance.
   $info = field_info_instance('node', 'field_metadata_extended', 'dataset');
   if ($info) {
-    $message = t("...Deleted field_metadata_extended Field Instance\n");
     field_delete_instance(_get_metadata_extended_field_instance(), FALSE);
+    watchdog('dkan_dataset_paragraphs', 'Deleted field_metadata_extended Field Instance');
   }
 
   // Remove field_metadata_extended field base.
   field_delete_field('field_metadata_extended');
-  $message .= t("...Deleted field_metadata_extended Field Base\n");
-  echo $message;
+  watchdog('dkan_dataset_paragraphs', 'Deleted field_metadata_extended Field Base');
 }
 
 /**
