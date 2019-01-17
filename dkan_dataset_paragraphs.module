@@ -19,3 +19,14 @@ function dkan_dataset_paragraphs_form_dataset_node_form_alter(&$form, &$form_sta
     $form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function dkan_dataset_paragraphs_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    $group = $implementations['dkan_dataset_paragraphs'];
+    unset($implementations['dkan_dataset_paragraphs']);
+    $implementations['dkan_dataset_paragraphs'] = $group;
+  }
+}
