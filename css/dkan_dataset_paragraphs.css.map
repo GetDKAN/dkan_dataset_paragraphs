@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEI,4DAAY;EACV,aAAa,EAAE,GAAG;AAEpB,uEAAuB;EACrB,aAAa,EAAE,IAAI;AAIrB,iFAAmB;EACjB,OAAO,EAAE,IAAI;AAEf,4FAA8B;EAC5B,OAAO,EAAE,EAAE",
+"sources": ["../scss/dkan_dataset_paragraphs.scss"],
+"names": [],
+"file": "dkan_dataset_paragraphs.css"
+}

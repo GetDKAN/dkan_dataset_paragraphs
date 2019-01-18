@@ -1,0 +1,18 @@
+table.extended-metadata {
+  div.field-type-text-long {
+    .field-item {
+      margin-bottom: 1em;
+    }
+    .field-item:last-child {
+      margin-bottom: .5em;
+    }
+  }
+  div.field-type-taxonomy-term-reference {
+    .field-item::after {
+      content: ", ";
+    }
+    .field-item:last-child::after {
+      content: "";
+    }
+  }
+}

@@ -5,15 +5,28 @@
  */
 
 /**
- * Implements hook_form_alter().
+ * Implements hook_form_FORM_ID_alter().
  */
-function dkan_dataset_paragraphs_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'dataset_node_form') {
-    if (isset($form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['add_more']['#markup'])) {
-      // Remove Extended Metadata field if no bundles are avilable.
-      if (stripos($form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['add_more']['#markup'], 'no bundles available') !== FALSE) {
-        unset($form['field_metadata_extended']);
-      }
+function dkan_dataset_paragraphs_form_dataset_node_form_alter(&$form, &$form_state, $form_id) {
+  if (isset($form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['add_more']['#markup'])) {
+    // Remove Extended Metadata field if no bundles are avilable.
+    if (stripos($form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['add_more']['#markup'], 'no bundles available') !== FALSE) {
+      unset($form['field_metadata_extended']);
     }
+  }
+  // Hide the add_more buttons for Extended Metadata.
+  if (isset($form['field_metadata_extended'][LANGUAGE_NONE]['add_more'])) {
+    $form['field_metadata_extended'][LANGUAGE_NONE]['add_more']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function dkan_dataset_paragraphs_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'form_alter') {
+    $group = $implementations['dkan_dataset_paragraphs'];
+    unset($implementations['dkan_dataset_paragraphs']);
+    $implementations['dkan_dataset_paragraphs'] = $group;
   }
 }
