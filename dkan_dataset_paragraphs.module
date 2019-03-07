@@ -24,7 +24,7 @@ function dkan_dataset_paragraphs_form_dataset_node_form_alter(&$form, &$form_sta
  * Implements hook_module_implements_alter().
  */
 function dkan_dataset_paragraphs_module_implements_alter(&$implementations, $hook) {
-  if ($hook === 'form_alter') {
+  if ($hook === 'form_alter' && isset($implementations['dkan_dataset_paragraphs'])) {
     $group = $implementations['dkan_dataset_paragraphs'];
     unset($implementations['dkan_dataset_paragraphs']);
     $implementations['dkan_dataset_paragraphs'] = $group;
