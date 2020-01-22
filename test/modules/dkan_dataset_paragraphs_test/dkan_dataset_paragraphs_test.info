@@ -1,0 +1,15 @@
+name = DKAN Dataset Paragraphs Test
+description = Creates an Extended Metadata test paragraph
+core = 7.x
+package = DKAN
+dependencies[] = features
+dependencies[] = open_data_schema_map
+dependencies[] = text
+dependencies[] = paragraphs
+dependencies[] = paragraphs_defaults
+dependencies[] = dkan_dataset_content_types
+dependencies[] = dkan_dataset_paragraphs
+features[features_api][] = api:2
+features[field_base][] = field_metadata_test_field
+features[field_instance][] = paragraphs_item-extended_metadata_test-field_metadata_test_field
+features[paragraphs][] = extended_metadata_test
