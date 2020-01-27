@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * dkan_dataset_paragraphs_test.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dkan_dataset_paragraphs_test_install() {
+  $features_to_revert = array(
+      'dkan_dataset_paragraphs_test',
+  );
+  foreach ($features_to_revert as $feature_name) {
+    $feature = features_get_features($feature_name);
+    $components = array_keys($feature->info['features']);
+    features_revert(array($feature_name => $components));
+  }
+  // Set up Defaults
+  $test_metadata = new ParagraphsItemEntity();
+  $test_metadata->field_name = 'field_metadata_extended';
+  $test_metadata->bundle = 'extended_metadata_test';
+  $test_metadata->save(TRUE);
+  db_merge('paragraphs_defaults')
+    ->insertFields(array(
+      'entity_type' => 'node',
+      'field_name' => 'field_metadata_extended',
+      'bundle' => 'dataset',
+      'item_id' => $test_metadata->item_id,
+    ))
+    ->updateFields(array(
+      'item_id' => $test_metadata->item_id,
+    ))
+    ->key(array(
+      'item_id' => $test_metadata->item_id,
+    ))
+    ->execute();
+}
