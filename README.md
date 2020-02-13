@@ -1,4 +1,6 @@
-# About this module
+[![CircleCI](https://circleci.com/gh/GetDKAN/dkan_dataset_paragraphs.svg?style=svg)](https://circleci.com/gh/GetDKAN/dkan_dataset_paragraphs)
+
+# DKAN Dataset Paragraphs (Extended Metadata)
 
 This module adds the "Extended Metadata" field to the dataset content type.
 
