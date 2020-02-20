@@ -1,5 +1,8 @@
 api: '2'
 core: 7.x
+defaults:
+  projects:
+    subdir: contrib
 projects:
   paragraphs:
     version: '1.0-rc5'
