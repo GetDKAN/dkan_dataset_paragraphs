@@ -36,6 +36,9 @@ This module requires the Paragraphs and Paragraphs Defaults modules. If you are 
 
 When enabling the module, there is a known issue with automatically enabling Paragraphs simultaneously. Enabling the Paragraphs module first is recommended.
 
+## License
+
+DKAN and related modules are freely-available under the ["GNU General Public License, version 2 or any later version"](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) license.
 
 ## Acknowledgements
 
